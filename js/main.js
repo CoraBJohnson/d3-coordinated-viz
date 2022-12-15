@@ -10,6 +10,7 @@
 
 //set up choropleth map
     function setMap() {
+
         //map frame dimensions
         var width = 960,
             height = 460;
@@ -40,24 +41,25 @@
         promises.push(d3.json('data/nc_counties.topojson'));  //load choropleth spatial data
         Promise.all(promises).then(callback);
 
-        //console.log(promises);
+        console.log(promises);
 
         function callback(data) {
             csvData = data[0];
-            nc = data[1];
-            states = data[2];
+            states = data[1];
+            nc = data[2];
 
             console.log(csvData);
             console.log(nc);
             console.log('hello1');
+            console.log(states);
 
             setGraticule(map, path);  //add graticule to map
 
             //translate topoJSONs
-            var stateOutlines = topojson.feature(states, states.objects.stateOutlines),   //get array of features to pass to .data()
-                ncCounties = topojson.feature(nc, nc.objects.ncCounties).features;        //assign variable names to the features in the topojson data
+            var stateOutlines = topojson.feature(states, states.objects.stateOutlines);   //get array of features to pass to .data()
+            var ncCounties = topojson.feature(nc, nc.objects.ncCounties);        //assign variable names to the features in the topojson data
 
-            console.log('hello2');
+            console.log(ncCounties);
 
             //add states to map using path generator. creates single svg element for states
             var otherStates = map.append('path')
