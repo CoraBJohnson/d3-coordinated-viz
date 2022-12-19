@@ -51,17 +51,19 @@
             states = data[1];
             nc = data[2];
 
+            console.log('data');
             console.log(csvData);
             console.log(nc);
             console.log(states);
-            console.log('hello1');
 
             //setGraticule(map, path);  //add graticule to map
 
             //translate topoJSONs
-            var stateOutlines = topojson.feature(states, states.objects.nc_counties).features;   //get array of features to pass to .data()
+            var stateOutlines = topojson.feature(states, states.objects.backgroundStates).features;   //get array of features to pass to .data()
             var ncCounties = topojson.feature(nc, nc.objects.nc_counties).features;        //assign variable names to the features in the topojson data
 
+            console.log('stateOutlines and ncCounties:')
+            console.log(stateOutlines);
             console.log(ncCounties);
 
             //add states to map using path generator. creates single svg element for states
@@ -136,7 +138,7 @@
                 ;
             }
             ;
-            console.log('hello3');
+            console.log('joinData function ncCounties:');
             console.log(ncCounties);
             return ncCounties;
         };
