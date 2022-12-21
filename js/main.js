@@ -22,18 +22,16 @@
             .attr('width', width)
             .attr('height', height);
 
-        //create Albers equal area conic projection centered on North Carolina
-        //var projection = d3.geoAlbers()
-          //  .center([1.2, 35.3])
-            //.rotate([81, 0, 0])
-            //.parallels([29.5, 45.5])
-            //.scale(7000)
-            //.translate([width / 2, height / 2]);
+        //use projection method to creat projection generator
+        //Albers equal area conic projection centered on North Carolina
+        var projection = d3.geoAlbers()
+            .center([1.2, 35.3])
+            .rotate([81, 0, 0])
+            .parallels([33, 78])
+            .scale(7000)
+            .translate([width / 2, height / 2]);
 
-        var projection = d3.geoAlbersUsa()
-            .scale(1500);
-
-        //create path generator
+        //feed projection generator to create path generator
         var path = d3.geoPath()
             .projection(projection);
 
